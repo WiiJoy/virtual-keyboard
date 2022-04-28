@@ -1,1 +1,13 @@
+# Directories
 .DS_Store
+node_modules
+/dist
+.idea
+.vscode
+
+# Local env files
+.env.local
+.env.*.local
+
+# Logs
+npm-debug.log*
