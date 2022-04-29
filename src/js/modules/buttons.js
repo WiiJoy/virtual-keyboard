@@ -145,7 +145,136 @@ const buttons = {
                 { key: 'ArrowRight', shiftKey: 'ArrowRight', keyCode: 'ArrowRight' },
             ],
         ],
-    en: 'buttons-en'
+    en:
+    [
+        [
+            { key: '`', shiftKey: '¬', keyCode: 'Backquote' },
+            { key: '1', shiftKey: '!', keyCode: 'Digit1' },
+            { key: '2', shiftKey: '"', keyCode: 'Digit2' },
+            { key: '3', shiftKey: '£', keyCode: 'Digit3' },
+            { key: '4', shiftKey: '$', keyCode: 'Digit4' },
+            { key: '5', shiftKey: '%', keyCode: 'Digit5' },
+            { key: '6', shiftKey: '^', keyCode: 'Digit6' },
+            { key: '7', shiftKey: '&', keyCode: 'Digit7' },
+            { key: '8', shiftKey: '*', keyCode: 'Digit8' },
+            { key: '9', shiftKey: '(', keyCode: 'Digit9' },
+            { key: '0', shiftKey: ')', keyCode: 'Digit0' },
+            { key: '-', shiftKey: '_', keyCode: 'Minus' },
+            { key: '=', shiftKey: '+', keyCode: 'Equal' },
+            { key: 'Backspace', shiftKey: 'Backspace', keyCode: 'Backspace' },
+        ],
+        [
+            { key: 'Tab', shiftKey: 'Tab', keyCode: 'Tab' },
+            {
+                key: 'q', shiftKey: 'Q', keyCode: 'KeyQ', capsLockKey: 'Q',
+            },
+            {
+                key: 'w', shiftKey: 'W', keyCode: 'KeyW', capsLockKey: 'W',
+            },
+            {
+                key: 'e', shiftKey: 'E', keyCode: 'KeyE', capsLockKey: 'E',
+            },
+            {
+                key: 'r', shiftKey: 'R', keyCode: 'KeyR', capsLockKey: 'R',
+            },
+            {
+                key: 't', shiftKey: 'T', keyCode: 'KeyT', capsLockKey: 'T',
+            },
+            {
+                key: 'y', shiftKey: 'Y', keyCode: 'KeyY', capsLockKey: 'Y',
+            },
+            {
+                key: 'u', shiftKey: 'U', keyCode: 'KeyU', capsLockKey: 'U',
+            },
+            {
+                key: 'i', shiftKey: 'I', keyCode: 'KeyI', capsLockKey: 'I',
+            },
+            {
+                key: 'o', shiftKey: 'O', keyCode: 'KeyO', capsLockKey: 'O',
+            },
+            {
+                key: 'p', shiftKey: 'P', keyCode: 'KeyP', capsLockKey: 'P',
+            },
+            { key: '[', shiftKey: '{', keyCode: 'BracketLeft' },
+            { key: ']', shiftKey: '}', keyCode: 'BracketRight' },
+            
+        ],
+        [
+            { key: 'CapsLock', shiftKey: 'CapsLock', keyCode: 'CapsLock' },
+            {
+                key: 'a', shiftKey: 'A', keyCode: 'KeyA', capsLockKey: 'A',
+            },
+            {
+                key: 's', shiftKey: 'S', keyCode: 'KeyS', capsLockKey: 'S',
+            },
+            {
+                key: 'd', shiftKey: 'D', keyCode: 'KeyD', capsLockKey: 'D',
+            },
+            {
+                key: 'f', shiftKey: 'F', keyCode: 'KeyF', capsLockKey: 'F',
+            },
+            {
+                key: 'g', shiftKey: 'G', keyCode: 'KeyG', capsLockKey: 'G',
+            },
+            {
+                key: 'h', shiftKey: 'H', keyCode: 'KeyH', capsLockKey: 'H',
+            },
+            {
+                key: 'j', shiftKey: 'J', keyCode: 'KeyJ', capsLockKey: 'J',
+            },
+            {
+                key: 'k', shiftKey: 'K', keyCode: 'KeyK', capsLockKey: 'K',
+            },
+            {
+                key: 'l', shiftKey: 'L', keyCode: 'KeyL', capsLockKey: 'L',
+            },
+            { key: ';', shiftKey: ':', keyCode: 'Semicolon' },
+            { key: '\'', shiftKey: '@', keyCode: 'Quote' },
+            { key: '#', shiftKey: '~', keyCode: 'Backslash' },
+            { key: 'Enter', shiftKey: 'Enter', keyCode: 'Enter' },
+        ],
+        [
+            { key: 'Shift', shiftKey: 'Shift', keyCode: 'ShiftLeft' },
+            { key: '\\', shiftKey: '|', keyCode: 'IntlBackslash' },
+            {
+                key: 'z', shiftKey: 'Z', keyCode: 'KeyZ', capsLockKey: 'Z',
+            },
+            {
+                key: 'x', shiftKey: 'X', keyCode: 'KeyX', capsLockKey: 'X',
+            },
+            {
+                key: 'c', shiftKey: 'C', keyCode: 'KeyC', capsLockKey: 'C',
+            },
+            {
+                key: 'v', shiftKey: 'V', keyCode: 'KeyV', capsLockKey: 'V',
+            },
+            {
+                key: 'b', shiftKey: 'B', keyCode: 'KeyB', capsLockKey: 'B',
+            },
+            {
+                key: 'n', shiftKey: 'N', keyCode: 'KeyN', capsLockKey: 'N',
+            },
+            {
+                key: 'm', shiftKey: 'M', keyCode: 'KeyM', capsLockKey: 'M',
+            },
+            { key: ',', shiftKey: '<', keyCode: 'Comma' },
+            { key: '.', shiftKey: '>', keyCode: 'Period' },
+            { key: '/', shiftKey: '?', keyCode: 'Slash' },
+            { key: 'ArrowUp', shiftKey: 'ArrowUp', keyCode: 'ArrowUp' },
+            { key: 'Shift', shiftKey: 'Shift', keyCode: 'ShiftRight' },
+        ],
+        [
+            { key: 'Control', shiftKey: 'Control', keyCode: 'ControlLeft' },
+            { key: 'Option', shiftKey: 'Option', keyCode: 'AltLeft' },
+            { key: 'Command', shiftKey: 'Command', keyCode: 'MetaLeft' },
+            { key: ' ', shiftKey: ' ', keyCode: 'Space' },
+            { key: 'Command', shiftKey: 'Command', keyCode: 'MetaRight' },
+            { key: 'Alt', shiftKey: 'Alt', keyCode: 'AltRight' },
+            { key: 'ArrowLeft', shiftKey: 'ArrowLeft', keyCode: 'ArrowLeft' },
+            { key: 'ArrowDown', shiftKey: 'ArrowDown', keyCode: 'ArrowDown' },
+            { key: 'ArrowRight', shiftKey: 'ArrowRight', keyCode: 'ArrowRight' },
+        ],
+    ],
 }
 
 export default buttons
