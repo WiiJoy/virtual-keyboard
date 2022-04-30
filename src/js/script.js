@@ -11,7 +11,7 @@ const wrapper = createElement('div', document.body, 'keyboard__wrapper')
 // const wrapper = document.createElement('div')
 
 
-for (let line of buttons.en) {
+for (let line of buttons.ru) {
     const btnLine = createElement('div', wrapper, 'keyboard__line')
     for (let button of line) {
         const btn = createElement('div', btnLine, 'keyboard__btn')
