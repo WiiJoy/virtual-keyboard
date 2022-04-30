@@ -6,6 +6,34 @@
 
 body {
     height: 100px;
-    background-color: green;
+    background-color: black;
+}
+
+.keyboard {
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: 850px;
+        margin: 0 auto;
+    }
+
+    &__line {
+        display: flex;
+        gap: 10px;
+    }
+
+    &__btn {
+        border: 2px solid #08deea;
+        height: 45px;
+        width: 45px;
+        border-radius: 10px 0 10px 0;
+        background-color: rgba($color: #08deea, $alpha: .5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
