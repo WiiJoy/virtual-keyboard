@@ -25,16 +25,14 @@ class Keyboard {
         for (let line of this.buttons.ru) {
             const btnLine = createElement('div', this.wrapper, 'keyboard__line')
             for (let button of line) {
-                // console.log(button)
                 const btnClasses = ['keyboard__btn']
         
                 if (button.keyClasses) btnClasses.push(button.keyClasses)
         
                 const btn = createElement('div', btnLine, ...btnClasses)
                 btn.innerHTML = button.key
-                // btnLine.append(btn)
+                btn.dataset.key = button.keyCode
             }
-            // wrapper.append(btnLine)
         }
     }
 }

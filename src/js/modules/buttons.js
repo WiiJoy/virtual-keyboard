@@ -57,6 +57,9 @@ const buttons = {
                 {
                     key: 'ъ', shiftKey: 'Ъ', keyCode: 'BracketRight', capsLockKey: 'Ъ',
                 },
+                {
+                    key: 'язык', shiftKey: 'язык', keyCode: 'KeyLang', keyClasses: 'keyboard__btn_big'
+                }
             
             ],
             [
@@ -197,6 +200,9 @@ const buttons = {
             },
             { key: '[', shiftKey: '{', keyCode: 'BracketLeft' },
             { key: ']', shiftKey: '}', keyCode: 'BracketRight' },
+            {
+                key: 'язык', shiftKey: 'язык', keyCode: 'KeyLang', keyClasses: 'keyboard__btn_big'
+            }
             
         ],
         [
