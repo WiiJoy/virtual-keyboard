@@ -4,7 +4,10 @@ import createElement from './modules/dom-create'
 import '../scss/style.scss'
 
 alert('Check alert!')
-console.log(buttons)
+// console.log(buttons)
+
+const textarea = createElement('textarea', document.body, 'keyboard__input')
+textarea.setAttribute('autofocus', '')
 
 const wrapper = createElement('div', document.body, 'keyboard__wrapper')
 
@@ -14,7 +17,7 @@ const wrapper = createElement('div', document.body, 'keyboard__wrapper')
 for (let line of buttons.ru) {
     const btnLine = createElement('div', wrapper, 'keyboard__line')
     for (let button of line) {
-        console.log(button)
+        // console.log(button)
         const btnClasses = ['keyboard__btn']
 
         if (button.keyClasses) btnClasses.push(button.keyClasses)
@@ -25,6 +28,8 @@ for (let line of buttons.ru) {
     }
     // wrapper.append(btnLine)
 }
+
+
 
 // document.body.append(wrapper)
 

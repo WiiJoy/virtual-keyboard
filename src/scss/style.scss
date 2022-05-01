@@ -8,11 +8,29 @@
 }
 
 body {
-    height: 100px;
+    height: 100vh;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
 .keyboard {
+    &__input {
+        background-color: rgba($color: #08deea, $alpha: .5);
+        border: 2px solid #08deea;
+        border-radius: 10px 0 10px 0;
+        padding: 10px;
+        outline: none;
+        resize: none;
+        width: 850px;
+        height: 300px;
+        color: #c4ffff;
+
+    }
+
     &__wrapper {
         display: flex;
         flex-direction: column;
@@ -37,10 +55,13 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: 18px;
         cursor: pointer;
+        color: #c4ffff;
 
         &_big {
             width: 90px;
+            font-size: 14px;
         }
 
         &_space {
