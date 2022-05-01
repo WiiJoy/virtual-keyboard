@@ -89,15 +89,43 @@ class Keyboard {
         this.changeTextareaSelection(this.textarea.selectionStart + 1)
     }
 
-    handleKeyUpEvent(ev) {
+    handleKeyDownEvent(ev) {
         // console.log(ev)
+
+        const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`)
+
         switch (ev.code) {
+            case 'ShiftLeft':
+            case 'ShiftRight':
+                this.isShift = !this.isShift
+                this.renderButtons()
+                break
+            case 'CapsLock':
+                this.isCapsLock = !this.isCapsLock
+                this.renderButtons()
+                break
+            case 'Tab':
+                break
+            case 'Backspace':
+                break
+            case 'Enter':
+                break
+            case 'ControlLeft':
+                break
+            case 'AltLeft':
+            case 'AltRight':
+                break
+            case 'MetaLeft':
+            case 'MetaRight':
+                break
             case 'ArrowUp':
             case 'ArrowDown':
             case 'ArrowLeft':
             case 'ArrowRight':
                 break
             default:
+                ev.preventDefault()
+                this.changeTextValue(currBtn.innerHTML)
                 console.log(ev.code)
         }
     }
@@ -183,7 +211,7 @@ class Keyboard {
         }
 
         this.wrapper.addEventListener('click', this.handleMouseClick.bind(this))
-        window.addEventListener('keyup', this.handleKeyUpEvent.bind(this))
+        window.addEventListener('keydown', this.handleKeyDownEvent.bind(this))
     }
 }
 
