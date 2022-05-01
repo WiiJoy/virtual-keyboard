@@ -61,6 +61,8 @@ class Keyboard {
         }
     }
 
+
+
     handleMouseClick(ev) {
         if (!ev.target.classList.contains('keyboard__btn')) return
 
@@ -100,11 +102,11 @@ class Keyboard {
 
             default:
                 console.log(ev.target)
+                this.textarea.value = this.textarea.value + ev.target.innerHTML
+                this.textarea.focus()
 
         }
     }
-
-    
 
     init() {
         this.textarea = createElement('textarea', document.body, 'keyboard__input')
