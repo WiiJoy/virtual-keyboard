@@ -14,7 +14,86 @@ class Keyboard {
         }
         this.textarea = null
         this.wrapper = null
+        this.lang = 'ru'
+        this.isShift = false
+        this.isCapsLock = false
     }
+
+    renderButtons() {
+        console.log('start re-render')
+        this.wrapper.innerHTML = ''
+        for (let line of this.buttons[this.lang]) {
+            const btnLine = createElement('div', this.wrapper, 'keyboard__line')
+            for (let button of line) {
+                const btnClasses = ['keyboard__btn']
+        
+                if (button.keyClasses) btnClasses.push(button.keyClasses)
+        
+                const btn = createElement('div', btnLine, ...btnClasses)
+
+                let buttonKey = this.checkRegister(button)
+
+                // if (!thisCapsLock) {
+
+                // } else {
+
+                // }
+
+                btn.innerHTML = buttonKey
+                btn.dataset.key = button.keyCode
+            }
+        }
+    }
+
+    checkRegister(btn) {
+        if (!this.isCapsLock) {
+            if (this.isShift) {
+                return btn.shiftKey
+            } else {
+                return btn.key
+            }
+        } else {
+            if (this.isShift) {
+                return btn.key
+            } else {
+                return btn.shiftKey
+            }
+        }
+    }
+
+    handleMouseClick(ev) {
+        if (!ev.target.classList.contains('keyboard__btn')) return
+
+        switch (ev.target.dataset.key) {
+            case 'KeyLang':
+                if (this.lang === 'ru') {
+                    this.lang = 'en'
+                } else {
+                    this.lang = 'ru'
+                }
+
+                console.log(this)
+
+                this.renderButtons()
+                break
+            case 'ShiftLeft':
+            case 'ShiftRight':
+                this.isShift = !this.isShift
+                this.renderButtons()
+                break
+            case 'CapsLock':
+                this.isCapsLock = !this.isCapsLock
+                this.renderButtons()
+                break
+
+
+            default:
+                console.log(ev.target)
+
+        }
+    }
+
+    
 
     init() {
         this.textarea = createElement('textarea', document.body, 'keyboard__input')
@@ -22,7 +101,7 @@ class Keyboard {
 
         this.wrapper = createElement('div', document.body, 'keyboard__wrapper')
 
-        for (let line of this.buttons.ru) {
+        for (let line of this.buttons[this.lang]) {
             const btnLine = createElement('div', this.wrapper, 'keyboard__line')
             for (let button of line) {
                 const btnClasses = ['keyboard__btn']
@@ -34,6 +113,8 @@ class Keyboard {
                 btn.dataset.key = button.keyCode
             }
         }
+
+        this.wrapper.addEventListener('click', this.handleMouseClick.bind(this))
     }
 }
 
