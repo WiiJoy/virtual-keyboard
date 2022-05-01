@@ -37,6 +37,15 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
+
+        &_big {
+            width: 90px;
+        }
+
+        &_space {
+            width: 320px;
+        }
     }
 }
 

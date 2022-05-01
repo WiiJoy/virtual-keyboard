@@ -14,7 +14,12 @@ const wrapper = createElement('div', document.body, 'keyboard__wrapper')
 for (let line of buttons.ru) {
     const btnLine = createElement('div', wrapper, 'keyboard__line')
     for (let button of line) {
-        const btn = createElement('div', btnLine, 'keyboard__btn')
+        console.log(button)
+        const btnClasses = ['keyboard__btn']
+
+        if (button.keyClasses) btnClasses.push(button.keyClasses)
+
+        const btn = createElement('div', btnLine, ...btnClasses)
         btn.innerHTML = button.key
         // btnLine.append(btn)
     }
