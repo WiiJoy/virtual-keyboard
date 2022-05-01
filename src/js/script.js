@@ -63,10 +63,44 @@ class Keyboard {
 
     changeTextValue(text) {
         this.textarea.setRangeText(text, this.textarea.selectionStart, this.textarea.selectionEnd, 'end')
+        console.log(this.textarea.value)
         this.textarea.focus();
     }
 
+    changeTextareaSelection(position) {
+        this.textarea.selectionStart = position
+        this.textarea.selectionEnd = this.textarea.selectionStart
+        this.textarea.focus()
+    }
 
+    toUp() {
+        this.changeTextareaSelection(0)
+    }
+
+    toDown() {
+        this.changeTextareaSelection(this.textarea.value.length)
+    }
+
+    toLeft() {
+        this.changeTextareaSelection(this.textarea.selectionStart - 1)
+    }
+
+    toRight() {
+        this.changeTextareaSelection(this.textarea.selectionStart + 1)
+    }
+
+    handleKeyUpEvent(ev) {
+        // console.log(ev)
+        switch (ev.code) {
+            case 'ArrowUp':
+            case 'ArrowDown':
+            case 'ArrowLeft':
+            case 'ArrowRight':
+                break
+            default:
+                console.log(ev.code)
+        }
+    }
 
     handleMouseClick(ev) {
         if (!ev.target.classList.contains('keyboard__btn')) return
@@ -104,20 +138,34 @@ class Keyboard {
             case 'MetaLeft':
             case 'MetaRight':
                 break
-
+            case 'ArrowUp':
+                ev.preventDefault()
+                this.toUp()
+                break
+            case 'ArrowDown':
+                ev.preventDefault()
+                this.toDown()
+                break
+            case 'ArrowLeft':
+                ev.preventDefault()
+                this.toLeft()
+                break
+            case 'ArrowRight':
+                ev.preventDefault()
+                this.toRight()
+                break
             default:
                 console.log(ev.target)
                 // this.textarea.value = this.textarea.value + ev.target.innerHTML
                 // this.textarea.focus()
                 // console.log(this.textarea.selectionStart, this.textarea.selectionEnd)
                 this.changeTextValue(ev.target.innerHTML)
-
         }
     }
 
     init() {
         this.textarea = createElement('textarea', document.body, 'keyboard__input')
-        this.textarea.setAttribute('autofocus', '')
+        // this.textarea.setAttribute('autofocus', '')
 
         this.wrapper = createElement('div', document.body, 'keyboard__wrapper')
 
@@ -135,6 +183,7 @@ class Keyboard {
         }
 
         this.wrapper.addEventListener('click', this.handleMouseClick.bind(this))
+        window.addEventListener('keyup', this.handleKeyUpEvent.bind(this))
     }
 }
 
@@ -166,7 +215,7 @@ keyboard.init()
 
 // document.body.append(wrapper)
 
-document.addEventListener('keyup', (ev) => {
-    console.log(ev)
-})
+// document.addEventListener('keyup', (ev) => {
+//     console.log(ev)
+// })
 
