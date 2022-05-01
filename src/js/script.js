@@ -72,8 +72,6 @@ class Keyboard {
                     this.lang = 'ru'
                 }
 
-                console.log(this)
-
                 this.renderButtons()
                 break
             case 'ShiftLeft':
@@ -85,7 +83,20 @@ class Keyboard {
                 this.isCapsLock = !this.isCapsLock
                 this.renderButtons()
                 break
-
+            case 'Tab':
+                break
+            case 'Backspace':
+                break
+            case 'Enter':
+                break
+            case 'ControlLeft':
+                break
+            case 'AltLeft':
+            case 'AltRight':
+                break
+            case 'MetaLeft':
+            case 'MetaRight':
+                break
 
             default:
                 console.log(ev.target)
