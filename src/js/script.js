@@ -61,6 +61,11 @@ class Keyboard {
         }
     }
 
+    changeTextValue(text) {
+        this.textarea.setRangeText(text, this.textarea.selectionStart, this.textarea.selectionEnd, 'end')
+        this.textarea.focus();
+    }
+
 
 
     handleMouseClick(ev) {
@@ -102,8 +107,10 @@ class Keyboard {
 
             default:
                 console.log(ev.target)
-                this.textarea.value = this.textarea.value + ev.target.innerHTML
-                this.textarea.focus()
+                // this.textarea.value = this.textarea.value + ev.target.innerHTML
+                // this.textarea.focus()
+                // console.log(this.textarea.selectionStart, this.textarea.selectionEnd)
+                this.changeTextValue(ev.target.innerHTML)
 
         }
     }
