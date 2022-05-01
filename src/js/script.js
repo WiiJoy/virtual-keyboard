@@ -90,9 +90,8 @@ class Keyboard {
     }
 
     handleKeyDownEvent(ev) {
-        // console.log(ev)
-
         const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`)
+        currBtn.classList.add('active')
 
         switch (ev.code) {
             case 'ShiftLeft':
@@ -128,6 +127,16 @@ class Keyboard {
                 this.changeTextValue(currBtn.innerHTML)
                 console.log(ev.code)
         }
+    }
+
+    handleKeyUpEvent(ev) {
+        const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`)
+        currBtn.classList.remove('active')
+
+        // switch (ev.code) {
+        //     default:
+        //         ev.preventDefault() 
+        // }
     }
 
     handleMouseClick(ev) {
@@ -212,6 +221,7 @@ class Keyboard {
 
         this.wrapper.addEventListener('click', this.handleMouseClick.bind(this))
         window.addEventListener('keydown', this.handleKeyDownEvent.bind(this))
+        window.addEventListener('keyup', this.handleKeyUpEvent.bind(this))
     }
 }
 
