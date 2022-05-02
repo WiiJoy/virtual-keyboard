@@ -97,6 +97,19 @@ class Keyboard {
         this.changeTextValue('\n')
     }
 
+    handleBackspaceKeyEvent() {
+        if (!this.textarea.value || this.textarea.selectionStart === 0) return
+
+        const currPosition = this.textarea.selectionStart
+        const oldText = this.textarea.value
+
+        this.textarea.value = ''
+
+        this.changeTextValue(oldText.slice(0, currPosition - 1) + oldText.slice(currPosition))
+
+        this.changeTextareaSelection(currPosition - 1)
+    }
+
     handleKeyDownEvent(ev) {
         const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`)
         currBtn.classList.add('active')
@@ -116,6 +129,8 @@ class Keyboard {
                 this.handleTabKeyEvent()
                 break
             case 'Backspace':
+                ev.preventDefault()
+                this.handleBackspaceKeyEvent()
                 break
             case 'Enter':
                 ev.preventDefault()
@@ -182,6 +197,7 @@ class Keyboard {
                 this.handleTabKeyEvent()
                 break
             case 'Backspace':
+                this.handleBackspaceKeyEvent()
                 break
             case 'Enter':
                 this.handleEnterKeyEvent()
