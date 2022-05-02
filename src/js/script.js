@@ -89,6 +89,14 @@ class Keyboard {
         this.changeTextareaSelection(this.textarea.selectionStart + 1)
     }
 
+    handleTabKeyEvent() {
+        this.changeTextValue('\t')
+    }
+
+    handleEnterKeyEvent() {
+        this.changeTextValue('\n')
+    }
+
     handleKeyDownEvent(ev) {
         const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`)
         currBtn.classList.add('active')
@@ -96,7 +104,7 @@ class Keyboard {
         switch (ev.code) {
             case 'ShiftLeft':
             case 'ShiftRight':
-                this.isShift = !this.isShift
+                this.isShift = true
                 this.renderButtons()
                 break
             case 'CapsLock':
@@ -104,10 +112,14 @@ class Keyboard {
                 this.renderButtons()
                 break
             case 'Tab':
+                ev.preventDefault()
+                this.handleTabKeyEvent()
                 break
             case 'Backspace':
                 break
             case 'Enter':
+                ev.preventDefault()
+                this.handleEnterKeyEvent()
                 break
             case 'ControlLeft':
                 break
@@ -133,10 +145,15 @@ class Keyboard {
         const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`)
         currBtn.classList.remove('active')
 
-        // switch (ev.code) {
-        //     default:
-        //         ev.preventDefault() 
-        // }
+        switch (ev.code) {
+            case 'ShiftLeft':
+            case 'ShiftRight':
+                this.isShift = false
+                this.renderButtons()
+                break
+            default:
+                console.log('key up: ', ev.code)
+        }
     }
 
     handleMouseClick(ev) {
@@ -162,10 +179,12 @@ class Keyboard {
                 this.renderButtons()
                 break
             case 'Tab':
+                this.handleTabKeyEvent()
                 break
             case 'Backspace':
                 break
             case 'Enter':
+                this.handleEnterKeyEvent()
                 break
             case 'ControlLeft':
                 break
