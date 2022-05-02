@@ -9,6 +9,7 @@ class Keyboard {
             ru: buttons.ru,
             en: buttons.en
         }
+        this.keyboard = null
         this.textarea = null
         this.wrapper = null
         this.lang = 'ru'
@@ -231,9 +232,11 @@ class Keyboard {
     }
 
     init() {
-        this.textarea = createElement('textarea', document.body, 'keyboard__input')
+        this.keyboard = createElement('div', document.body, 'keyboard')
 
-        this.wrapper = createElement('div', document.body, 'keyboard__wrapper')
+        this.textarea = createElement('textarea', this.keyboard, 'keyboard__input')
+
+        this.wrapper = createElement('div', this.keyboard, 'keyboard__wrapper')
 
         for (let line of this.buttons[this.lang]) {
             const btnLine = createElement('div', this.wrapper, 'keyboard__line')
@@ -251,6 +254,8 @@ class Keyboard {
         this.wrapper.addEventListener('click', this.handleMouseClick.bind(this))
         window.addEventListener('keydown', this.handleKeyDownEvent.bind(this))
         window.addEventListener('keyup', this.handleKeyUpEvent.bind(this))
+
+        this.textarea.focus()
     }
 }
 
