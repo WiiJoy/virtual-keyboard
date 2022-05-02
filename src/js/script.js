@@ -166,8 +166,22 @@ class Keyboard {
         }
     }
 
+    mouseOverEvent(ev) {
+        if (!ev.target.classList.contains('keyboard__btn')) return
+
+        ev.target.classList.add('hover')
+    }
+
+    mouseOutEvent(ev) {
+        if (!ev.target.classList.contains('keyboard__btn')) return
+
+        ev.target.classList.remove('hover')
+    }
+
     handleMouseClick(ev) {
         if (!ev.target.classList.contains('keyboard__btn')) return
+        
+        ev.target.classList.add('active')
 
         switch (ev.target.dataset.key) {
             case 'KeyLang':
@@ -229,6 +243,8 @@ class Keyboard {
                     this.renderButtons()
                 }
         }
+
+        setTimeout(() => ev.target.classList.remove('active'), 100)
     }
 
     init() {
@@ -252,6 +268,8 @@ class Keyboard {
         }
 
         this.wrapper.addEventListener('click', this.handleMouseClick.bind(this))
+        this.wrapper.addEventListener('mouseover', this.mouseOverEvent.bind(this))
+        this.wrapper.addEventListener('mouseout', this.mouseOutEvent.bind(this))
         window.addEventListener('keydown', this.handleKeyDownEvent.bind(this))
         window.addEventListener('keyup', this.handleKeyUpEvent.bind(this))
 

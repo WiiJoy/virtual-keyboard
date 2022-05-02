@@ -72,6 +72,7 @@ body {
         transition: .1s;
         cursor: pointer;
         color: #c4ffff;
+        user-select: none;
 
         &_big {
             width: 90px;
@@ -83,7 +84,7 @@ body {
         }
 
         &.hover {
-            background-color: rgba($color: #08deea, $alpha: .7);
+            background-color: rgba($color: #08deea, $alpha: .2);
         }
 
         &.active {
