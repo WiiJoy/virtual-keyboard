@@ -110,6 +110,7 @@ class Keyboard {
         switch (ev.code) {
             case 'ShiftLeft':
             case 'ShiftRight':
+                ev.preventDefault();
                 this.isShift = true
                 this.isShiftPush = true
                 this.renderButtons()
@@ -157,12 +158,27 @@ class Keyboard {
         switch (ev.code) {
             case 'ShiftLeft':
             case 'ShiftRight':
+                ev.preventDefault();
                 this.isShift = false
                 this.isShiftPush = false
                 this.renderButtons()
                 break
+            case 'Enter':
+            case 'Backspace':
+            case 'Tab':
+            case 'CapsLock':
+            case 'ControlLeft':
+            case 'AltLeft':
+            case 'AltRight':
+            case 'MetaLeft':
+            case 'MetaRight':
+            case 'ArrowUp':
+            case 'ArrowDown':
+            case 'ArrowLeft':
+            case 'ArrowRight':
+                break
             default:
-                console.log('key up: ', ev.code)
+                ev.preventDefault();
         }
     }
 
