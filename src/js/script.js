@@ -16,6 +16,7 @@ class Keyboard {
         this.wrapper = null
         this.lang = 'ru'
         this.isShift = false
+        this.isShiftPush = false
         this.isCapsLock = false
     }
 
@@ -118,6 +119,7 @@ class Keyboard {
             case 'ShiftLeft':
             case 'ShiftRight':
                 this.isShift = true
+                this.isShiftPush = true
                 this.renderButtons()
                 break
             case 'CapsLock':
@@ -164,6 +166,7 @@ class Keyboard {
             case 'ShiftLeft':
             case 'ShiftRight':
                 this.isShift = false
+                this.isShiftPush = false
                 this.renderButtons()
                 break
             default:
@@ -232,6 +235,10 @@ class Keyboard {
                 // this.textarea.focus()
                 // console.log(this.textarea.selectionStart, this.textarea.selectionEnd)
                 this.changeTextValue(ev.target.innerHTML)
+                if (!this.isShiftPush && this.isShift) {
+                    this.isShift = false
+                    this.renderButtons()
+                }
         }
     }
 
