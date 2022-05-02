@@ -3,9 +3,6 @@ import createElement from './modules/dom-create'
 
 import '../scss/style.scss'
 
-// alert('Check alert!')
-// console.log(buttons)
-
 class Keyboard {
     constructor() {
         this.buttons = {
@@ -33,12 +30,6 @@ class Keyboard {
                 const btn = createElement('div', btnLine, ...btnClasses)
 
                 let buttonKey = this.checkRegister(button)
-
-                // if (!thisCapsLock) {
-
-                // } else {
-
-                // }
 
                 btn.innerHTML = buttonKey
                 btn.dataset.key = button.keyCode
@@ -231,9 +222,6 @@ class Keyboard {
                 break
             default:
                 console.log(ev.target)
-                // this.textarea.value = this.textarea.value + ev.target.innerHTML
-                // this.textarea.focus()
-                // console.log(this.textarea.selectionStart, this.textarea.selectionEnd)
                 this.changeTextValue(ev.target.innerHTML)
                 if (!this.isShiftPush && this.isShift) {
                     this.isShift = false
@@ -244,7 +232,6 @@ class Keyboard {
 
     init() {
         this.textarea = createElement('textarea', document.body, 'keyboard__input')
-        // this.textarea.setAttribute('autofocus', '')
 
         this.wrapper = createElement('div', document.body, 'keyboard__wrapper')
 
@@ -267,35 +254,5 @@ class Keyboard {
     }
 }
 
-// const textarea = createElement('textarea', document.body, 'keyboard__input')
-// textarea.setAttribute('autofocus', '')
-
-// const wrapper = createElement('div', document.body, 'keyboard__wrapper')
-
-// const wrapper = document.createElement('div')
-
-
-// for (let line of this.buttons.ru) {
-//     const btnLine = createElement('div', this.wrapper, 'keyboard__line')
-//     for (let button of line) {
-//         // console.log(button)
-//         const btnClasses = ['keyboard__btn']
-
-//         if (button.keyClasses) btnClasses.push(button.keyClasses)
-
-//         const btn = createElement('div', btnLine, ...btnClasses)
-//         btn.innerHTML = button.key
-//         // btnLine.append(btn)
-//     }
-//     // wrapper.append(btnLine)
-// }
-
 const keyboard = new Keyboard()
 keyboard.init()
-
-// document.body.append(wrapper)
-
-// document.addEventListener('keyup', (ev) => {
-//     console.log(ev)
-// })
-
