@@ -20,7 +20,9 @@ module.exports = {
       ]
   },
   plugins: [
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+        title: "Virtual Keyboard"
+    })
   ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   watch: true
