@@ -1,11 +1,11 @@
 export default function createElement(tag, parent, ...classes) {
-    const element = document.createElement(tag)
+  const element = document.createElement(tag);
 
-    if (classes.length) {
-        element.classList.add(...classes)
-    }
+  if (classes.length) {
+    element.classList.add(...classes);
+  }
 
-    parent.append(element)
+  parent.append(element);
 
-    return element
+  return element;
 }
