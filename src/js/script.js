@@ -13,10 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
           this.keyboard = null;
           this.textarea = null;
           this.wrapper = null;
-          this.lang = 'ru';
+          this.lang = this.getLang() || 'ru';
           this.isShift = false;
           this.isShiftPush = false;
           this.isCapsLock = false;
+        }
+
+        setLang(lang) {
+            localStorage.setItem('keyboard-lang', lang)
+        }
+
+        getLang() {
+            if (localStorage.getItem('keyboard-lang')) {
+                return localStorage.getItem('keyboard-lang')
+            }
         }
       
         renderButtons() {
@@ -187,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
               } else {
                 this.lang = 'ru';
               }
+              this.setLang(this.lang)
       
               this.renderButtons();
               break;
