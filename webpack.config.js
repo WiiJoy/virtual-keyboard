@@ -6,23 +6,28 @@ module.exports = {
   output: {
     filename: 'script.js',
     path: path.resolve(__dirname, 'dist'),
+    clean: true
   },
   module: {
-      rules: [
-          {
-              test: /\.scss$/i,
-              use: [
-                  "style-loader",
-                  "css-loader",
-                  "sass-loader"
-              ]
-          }
-      ]
+        rules: [
+            {
+                test: /\.scss$/i,
+                use: [
+                    "style-loader",
+                    "css-loader",
+                    "sass-loader"
+                ]
+            }
+        ],
+        
   },
   plugins: [
     new HtmlWebpackPlugin({
-        title: "Virtual Keyboard"
-    })
+        title: "Virtual Keyboard",
+        inject: "body",
+        scriptLoading: "blocking",
+        favicon: "./src/assets/favicon.png"
+    }),
   ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   watch: true

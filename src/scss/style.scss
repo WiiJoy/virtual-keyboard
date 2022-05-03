@@ -1,4 +1,13 @@
-@import './fonts';
+// @import './fonts';
+
+@font-face {
+    font-family: 'Gugi Cyrillic';
+    src: url('../assets/fonts/GugiCyrillic.woff2') format('woff2'),
+        url('../assets/fonts/GugiCyrillic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 
 * {
     margin: 0;
