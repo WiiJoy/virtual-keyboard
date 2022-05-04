@@ -122,6 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
       
         handleKeyDownEvent(ev) {
           const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`);
+
+          if (ev.ctrlKey && ev.altKey) {
+            if (this.lang === 'ru') {
+                this.lang = 'en';
+              } else {
+                this.lang = 'ru';
+              }
+              this.setLang(this.lang)
+      
+              this.renderButtons();
+          }
       
           switch (ev.code) {
             case 'ShiftLeft':
@@ -277,8 +288,20 @@ document.addEventListener('DOMContentLoaded', () => {
       
         init() {
           this.keyboard = createElement('div', document.body, 'keyboard');
+
+          const keyboardOutput = createElement('div', this.keyboard, 'keyboard__output')
       
-          this.textarea = createElement('textarea', this.keyboard, 'keyboard__input');
+          this.textarea = createElement('textarea', keyboardOutput, 'keyboard__input');
+
+          const keyboardInfo = createElement('div', keyboardOutput, 'keyboard__info')
+
+          const keyboardBundle = createElement('div', keyboardInfo, 'keyboard__bundle')
+
+          keyboardBundle.append('Available hotkeys:\n1. Ctrl + ⌥ / Ctrl + Alt - switch language' )
+
+          const keyboardOs = createElement('div', keyboardInfo, 'keyboard__os')
+
+          keyboardOs.append('Please pay attention:\nYou\'re using an experimental macOS based system.')
       
           this.wrapper = createElement('div', this.keyboard, 'keyboard__wrapper');
       
