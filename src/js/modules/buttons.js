@@ -62,8 +62,8 @@ const buttons = {
               key: 'ъ', shiftKey: 'Ъ', keyCode: 'BracketRight', capsLockKey: 'Ъ',
             },
             {
-              key: 'язык', shiftKey: 'язык', keyCode: 'KeyLang', keyClasses: 'keyboard__btn_big',
-            },
+                key: 'DEL', shiftKey: 'DEL', keyCode: 'NumpadDecimal', keyClasses: 'keyboard__btn_big'
+            }
 
           ],
           [
@@ -149,6 +149,9 @@ const buttons = {
             },
           ],
           [
+            {
+                key: 'RU', shiftKey: 'RU', keyCode: 'KeyLang',
+            },
             { key: 'Ctrl', shiftKey: 'Ctrl', keyCode: 'ControlLeft' },
             { key: '⌥', shiftKey: '⌥', keyCode: 'AltLeft' },
             { key: '⌘', shiftKey: '⌘', keyCode: 'MetaLeft' },
@@ -219,8 +222,8 @@ const buttons = {
         { key: '[', shiftKey: '{', keyCode: 'BracketLeft' },
         { key: ']', shiftKey: '}', keyCode: 'BracketRight' },
         {
-          key: 'язык', shiftKey: 'язык', keyCode: 'KeyLang', keyClasses: 'keyboard__btn_big',
-        },
+            key: 'DEL', shiftKey: 'DEL', keyCode: 'NumpadDecimal', keyClasses: 'keyboard__btn_big'
+        }
 
       ],
       [
@@ -296,6 +299,9 @@ const buttons = {
         },
       ],
       [
+        {
+            key: 'EN', shiftKey: 'EN', keyCode: 'KeyLang',
+        },
         { key: 'Ctrl', shiftKey: 'Ctrl', keyCode: 'ControlLeft' },
         { key: '⌥', shiftKey: '⌥', keyCode: 'AltLeft' },
         { key: '⌘', shiftKey: '⌘', keyCode: 'MetaLeft' },
