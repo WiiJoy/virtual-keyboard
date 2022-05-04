@@ -18,12 +18,12 @@ const buttons = {
             { key: '-', shiftKey: '_', keyCode: 'Minus' },
             { key: '=', shiftKey: '+', keyCode: 'Equal' },
             {
-              key: 'Backspace', shiftKey: 'Backspace', keyCode: 'Backspace', keyClasses: 'keyboard__btn_big',
+              key: 'Backspace', keyCode: 'Backspace', keyClasses: 'keyboard__btn_big',
             },
           ],
           [
             {
-              key: 'Tab', shiftKey: 'Tab', keyCode: 'Tab', keyClasses: 'keyboard__btn_big',
+              key: 'Tab', keyCode: 'Tab', keyClasses: 'keyboard__btn_big',
             },
             {
               key: 'й', shiftKey: 'Й', keyCode: 'KeyQ', capsLockKey: 'Й',
@@ -62,13 +62,13 @@ const buttons = {
               key: 'ъ', shiftKey: 'Ъ', keyCode: 'BracketRight', capsLockKey: 'Ъ',
             },
             {
-                key: 'DEL', shiftKey: 'DEL', keyCode: 'NumpadDecimal', keyClasses: 'keyboard__btn_big'
+                key: 'DEL', keyCode: 'NumpadDecimal', keyClasses: 'keyboard__btn_big'
             }
 
           ],
           [
             {
-              key: 'CapsLock', shiftKey: 'CapsLock', keyCode: 'CapsLock', keyClasses: 'keyboard__btn_big',
+              key: 'CapsLock', keyCode: 'CapsLock', keyClasses: 'keyboard__btn_big',
             },
             {
               key: 'ф', shiftKey: 'Ф', keyCode: 'KeyA', capsLockKey: 'Ф',
@@ -107,12 +107,12 @@ const buttons = {
               key: '\\', shiftKey: '/', keyCode: 'Backslash',
             },
             {
-              key: 'Enter', shiftKey: 'Enter', keyCode: 'Enter', keyClasses: 'keyboard__btn_big',
+              key: 'Enter', keyCode: 'Enter', keyClasses: 'keyboard__btn_big',
             },
           ],
           [
             {
-              key: 'Shift', shiftKey: 'Shift', keyCode: 'ShiftLeft', keyClasses: 'keyboard__btn_big',
+              key: 'Shift', keyCode: 'ShiftLeft', keyClasses: 'keyboard__btn_big',
             },
             { key: ']', shiftKey: '[', keyCode: 'IntlBackslash' },
             {
@@ -143,26 +143,26 @@ const buttons = {
               key: 'ю', shiftKey: 'Ю', keyCode: 'Period', capsLockKey: 'Ю',
             },
             { key: '.', shiftKey: ',', keyCode: 'Slash' },
-            { key: '↑', shiftKey: '↑', keyCode: 'ArrowUp' },
+            { key: '↑', keyCode: 'ArrowUp' },
             {
-              key: 'Shift', shiftKey: 'Shift', keyCode: 'ShiftRight', keyClasses: 'keyboard__btn_big',
+              key: 'Shift', keyCode: 'ShiftRight', keyClasses: 'keyboard__btn_big',
             },
           ],
           [
             {
-                key: 'RU', shiftKey: 'RU', keyCode: 'KeyLang',
+                key: 'RU', keyCode: 'KeyLang',
             },
-            { key: 'Ctrl', shiftKey: 'Ctrl', keyCode: 'ControlLeft' },
-            { key: '⌥', shiftKey: '⌥', keyCode: 'AltLeft' },
-            { key: '⌘', shiftKey: '⌘', keyCode: 'MetaLeft' },
+            { key: 'Ctrl', keyCode: 'ControlLeft' },
+            { key: '⌥', keyCode: 'AltLeft' },
+            { key: '⌘', keyCode: 'MetaLeft' },
             {
-              key: ' ', shiftKey: ' ', keyCode: 'Space', keyClasses: 'keyboard__btn_space',
+              key: ' ', keyCode: 'Space', keyClasses: 'keyboard__btn_space',
             },
-            { key: '⌘', shiftKey: '⌘', keyCode: 'MetaRight' },
-            { key: '⌥', shiftKey: '⌥', keyCode: 'AltRight' },
-            { key: '←', shiftKey: '←', keyCode: 'ArrowLeft' },
-            { key: '↓', shiftKey: '↓', keyCode: 'ArrowDown' },
-            { key: '→', shiftKey: '→', keyCode: 'ArrowRight' },
+            { key: '⌘', keyCode: 'MetaRight' },
+            { key: '⌥', keyCode: 'AltRight' },
+            { key: '←', keyCode: 'ArrowLeft' },
+            { key: '↓', keyCode: 'ArrowDown' },
+            { key: '→', keyCode: 'ArrowRight' },
           ],
         ],
   en:

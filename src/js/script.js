@@ -45,6 +45,41 @@ document.addEventListener('DOMContentLoaded', () => {
             });
           });
         }
+
+        renderShiftCapslockButtons() {
+            const capslockBtns = this.buttons[this.lang].flat()
+
+            capslockBtns.forEach(btn => {
+                if (btn.capsLockKey || btn.shiftKey) {
+                    this.wrapper.querySelector(`[data-key=${btn.keyCode}]`).innerHTML = btn.key
+                }
+            })
+
+            if (this.isCapsLock && !this.isShift) {
+                capslockBtns.forEach(btn => {
+                    if (btn.capsLockKey) {
+                        this.wrapper.querySelector(`[data-key=${btn.keyCode}]`).innerHTML = btn.capsLockKey
+                    }
+                })
+            } else if (!this.isCapsLock && this.isShift) {
+                capslockBtns.forEach(btn => {
+                    if (btn.shiftKey) {
+                        this.wrapper.querySelector(`[data-key=${btn.keyCode}]`).innerHTML = btn.shiftKey
+                    }
+                })
+            } else if (this.isCapsLock && this.isShift) {
+                capslockBtns.forEach(btn => {
+                    if (btn.shiftKey) {
+                        this.wrapper.querySelector(`[data-key=${btn.keyCode}]`).innerHTML = btn.shiftKey
+                    }
+
+                    if (btn.capsLockKey) {
+                        this.wrapper.querySelector(`[data-key=${btn.keyCode}]`).innerHTML = btn.key
+                    }
+
+                })
+            } 
+        }
       
         checkRegister(btn) {
           if (!this.isCapsLock) {
@@ -140,11 +175,12 @@ document.addEventListener('DOMContentLoaded', () => {
               ev.preventDefault();
               this.isShift = true;
               this.isShiftPush = true;
-              this.renderButtons();
+              this.renderShiftCapslockButtons();
               break;
             case 'CapsLock':
               this.isCapsLock = !this.isCapsLock;
-              this.renderButtons();
+            //   this.renderButtons();
+                this.renderShiftCapslockButtons()
               break;
             case 'Tab':
               ev.preventDefault();
@@ -232,11 +268,12 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'ShiftLeft':
             case 'ShiftRight':
               this.isShift = !this.isShift;
-              this.renderButtons();
+              this.renderShiftCapslockButtons();
               break;
             case 'CapsLock':
               this.isCapsLock = !this.isCapsLock;
-              this.renderButtons();
+            //   this.renderButtons();
+              this.renderShiftCapslockButtons()
               break;
             case 'Tab':
               this.handleTabKeyEvent();
@@ -278,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
               this.changeTextValue(ev.target.innerHTML);
               if (!this.isShiftPush && this.isShift) {
                 this.isShift = false;
-                this.renderButtons();
+                this.renderShiftCapslockButtons();
               }
           }
           ev.target.classList.add('active');
