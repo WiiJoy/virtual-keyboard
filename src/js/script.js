@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
               const btnClasses = ['keyboard__btn'];
               if (button.keyClasses) btnClasses.push(button.keyClasses);
               const btn = createElement('div', btnLine, ...btnClasses);
-            //   const buttonKey = this.checkRegister(button);
               btn.innerHTML = button.key;
               btn.dataset.key = button.keyCode;
             });
@@ -78,23 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (btn.capsLockKey) {
                         this.wrapper.querySelector(`[data-key=${btn.keyCode}]`).innerHTML = btn.key
                     }
-
                 })
             } 
         }
-      
-        // checkRegister(btn) {
-        //   if (!this.isCapsLock) {
-        //     if (this.isShift) {
-        //       return btn.shiftKey;
-        //     }
-        //     return btn.key;
-        //   }
-        //   if (this.isShift) {
-        //     return btn.key;
-        //   }
-        //   return btn.shiftKey;
-        // }
       
         changeTextValue(text) {
           this.textarea.setRangeText(text, this.textarea.selectionStart, this.textarea.selectionEnd, 'end');
@@ -181,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
               break;
             case 'CapsLock':
               this.isCapsLock = !this.isCapsLock;
-            //   this.renderButtons();
                 this.renderShiftCapslockButtons()
               break;
             case 'Tab':
@@ -217,7 +201,6 @@ document.addEventListener('DOMContentLoaded', () => {
               ev.preventDefault();
               this.changeTextValue(currBtn.innerHTML);
           }
-      
           currBtn.classList.add('active');
         }
       
@@ -249,7 +232,6 @@ document.addEventListener('DOMContentLoaded', () => {
             default:
               ev.preventDefault();
           }
-      
           currBtn.classList.remove('active');
         }
       
@@ -274,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
               break;
             case 'CapsLock':
               this.isCapsLock = !this.isCapsLock;
-            //   this.renderButtons();
               this.renderShiftCapslockButtons()
               break;
             case 'Tab':

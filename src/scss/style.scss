@@ -1,13 +1,4 @@
-// @import './fonts';
-
-@font-face {
-    font-family: 'Gugi Cyrillic';
-    src: url('../assets/fonts/GugiCyrillic.woff2') format('woff2'),
-        url('../assets/fonts/GugiCyrillic.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
+@import './fonts';
 
 * {
     margin: 0;
@@ -45,15 +36,12 @@ body {
     }
 
     &__input {
-        // background-color: rgba($color: #08deea, $alpha: .5);
-        // border: 2px solid #08deea;
         border-radius: 10px 0 10px 0;
         padding: 20px;
         outline: none;
         resize: none;
         border: none;
         background: none;
-        // width: 850px;
         flex: 1;
         color: rgb(209, 203, 189);
         font-size: 16px;
@@ -102,7 +90,6 @@ body {
         height: 45px;
         width: 45px;
         border-radius: 10px 0 10px 0;
-        // background-color: rgba($color: #08deea, $alpha: .5);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -133,4 +120,3 @@ body {
         }
     }
 }
-
