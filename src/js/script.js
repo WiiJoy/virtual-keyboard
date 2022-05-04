@@ -39,11 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
               const btnClasses = ['keyboard__btn'];
               if (button.keyClasses) btnClasses.push(button.keyClasses);
               const btn = createElement('div', btnLine, ...btnClasses);
-              const buttonKey = this.checkRegister(button);
-              btn.innerHTML = buttonKey;
+            //   const buttonKey = this.checkRegister(button);
+              btn.innerHTML = button.key;
               btn.dataset.key = button.keyCode;
             });
           });
+
+          this.renderShiftCapslockButtons()
         }
 
         renderShiftCapslockButtons() {
@@ -81,18 +83,18 @@ document.addEventListener('DOMContentLoaded', () => {
             } 
         }
       
-        checkRegister(btn) {
-          if (!this.isCapsLock) {
-            if (this.isShift) {
-              return btn.shiftKey;
-            }
-            return btn.key;
-          }
-          if (this.isShift) {
-            return btn.key;
-          }
-          return btn.shiftKey;
-        }
+        // checkRegister(btn) {
+        //   if (!this.isCapsLock) {
+        //     if (this.isShift) {
+        //       return btn.shiftKey;
+        //     }
+        //     return btn.key;
+        //   }
+        //   if (this.isShift) {
+        //     return btn.key;
+        //   }
+        //   return btn.shiftKey;
+        // }
       
         changeTextValue(text) {
           this.textarea.setRangeText(text, this.textarea.selectionStart, this.textarea.selectionEnd, 'end');
