@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
               }
               this.setLang(this.lang)
       
-              this.renderButtons();
+              setTimeout(() => this.renderButtons(), 100)
           }
       
           switch (ev.code) {
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
               }
               this.setLang(this.lang)
       
-              this.renderButtons();
+              setTimeout(() => this.renderButtons(), 100)
               break;
             case 'ShiftLeft':
             case 'ShiftRight':
