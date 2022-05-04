@@ -33,13 +33,14 @@ body {
     justify-content: center;
     align-items: center;
     gap: 20px;
-    background-color: rgba($color: #08deea, $alpha: .5);
-    border: 2px solid #08deea;
+    background-color: rgba(45, 40, 36, .8);
+    border: 2px solid rgb(209, 203, 189);
     border-radius: 10px 0 10px 0;
 
     &__output {
         display: flex;
         width: 850px;
+        flex: 1;
     }
 
     &__input {
@@ -52,11 +53,9 @@ body {
         border: none;
         background: none;
         // width: 850px;
-        height: 300px;
-        color: #c4ffff;
+        flex: 1;
+        color: rgb(209, 203, 189);
         font-size: 16px;
-        flex: 1px;
-
     }
 
     &__info {
@@ -65,7 +64,7 @@ body {
         flex-direction: column;
         justify-content: space-between;
         white-space: pre-line;
-        color: #c4ffff;
+        color: rgb(209, 203, 189);
     }
 
     &__os {
@@ -88,7 +87,7 @@ body {
     }
 
     &__btn {
-        border: 2px solid #08deea;
+        border: 2px solid rgb(209, 203, 189);
         height: 45px;
         width: 45px;
         border-radius: 10px 0 10px 0;
@@ -99,8 +98,9 @@ body {
         font-size: 18px;
         transition: .1s;
         cursor: pointer;
-        color: #c4ffff;
+        color: rgb(209, 203, 189);
         user-select: none;
+        transform: scale(1);
 
         &_big {
             width: 90px;
@@ -112,11 +112,13 @@ body {
         }
 
         &.hover {
-            background-color: rgba($color: #08deea, $alpha: .2);
+            background-color: rgba(45, 40, 36, .9);
         }
 
         &.active {
-            background-color: rgba($color: #fd8090, $alpha: .7);
+            background-color: rgba(101, 220, 152, .7);
+            color:rgba(45, 40, 36, 1);
+            transform: scale(0.9);
         }
     }
 }
