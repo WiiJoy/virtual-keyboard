@@ -106,6 +106,19 @@ document.addEventListener('DOMContentLoaded', () => {
       
           this.changeTextareaSelection(currPosition - 1);
         }
+
+        handleDeleteKeyEvent() {
+            if (!this.textarea.value || this.textarea.selectionStart === this.textarea.value.length) return;
+
+            const currPosition = this.textarea.selectionStart;
+            const oldText = this.textarea.value;
+
+            this.textarea.value = '';
+      
+            this.changeTextValue(oldText.slice(0, currPosition) + oldText.slice(currPosition + 1));
+      
+            this.changeTextareaSelection(currPosition);
+        }
       
         handleKeyDownEvent(ev) {
           const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`);
@@ -130,6 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
               ev.preventDefault();
               this.handleBackspaceKeyEvent();
               break;
+            case 'NumpadDecimal':
+                ev.preventDefault()
+                this.handleDeleteKeyEvent();
+                break
             case 'Enter':
               ev.preventDefault();
               this.handleEnterKeyEvent();
@@ -216,6 +233,9 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'Backspace':
               this.handleBackspaceKeyEvent();
               break;
+            case 'NumpadDecimal':
+                this.handleDeleteKeyEvent();
+                break
             case 'Enter':
               this.handleEnterKeyEvent();
               break;
