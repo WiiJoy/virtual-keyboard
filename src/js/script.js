@@ -13,11 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
       this.keyboard = null;
       this.textarea = null;
       this.wrapper = null;
+      this.ls = window.localStorage;
       this.lang = this.getLang();
       this.isShift = false;
       this.isShiftPush = false;
       this.isCapsLock = false;
-      this.ls = localStorage;
+      this.fKeys = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12']
     }
 
     setLang(language) {
@@ -27,8 +28,10 @@ document.addEventListener('DOMContentLoaded', () => {
     getLang() {
       if (this.ls.getItem('keyboard-lang')) {
         return this.ls.getItem('keyboard-lang');
+      } else {
+        return 'ru';
       }
-      return 'ru';
+      
     }
 
     renderButtons() {
@@ -146,7 +149,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     handleKeyDownEvent(ev) {
+        if (this.fKeys.includes(ev.code)) return
+
       const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`);
+
+        console.log(ev)
 
       if (ev.ctrlKey && ev.altKey) {
         if (this.lang === 'ru') {
@@ -188,17 +195,21 @@ document.addEventListener('DOMContentLoaded', () => {
           this.handleEnterKeyEvent();
           break;
         case 'ControlLeft':
+            ev.preventDefault();
           break;
         case 'AltLeft':
         case 'AltRight':
+            ev.preventDefault();
           break;
         case 'MetaLeft':
         case 'MetaRight':
+            ev.preventDefault();
           break;
         case 'ArrowUp':
         case 'ArrowDown':
         case 'ArrowLeft':
         case 'ArrowRight':
+            ev.preventDefault();
           break;
         default:
           ev.preventDefault();
@@ -208,6 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     handleKeyUpEvent(ev) {
+        if (this.fKeys.includes(ev.code)) return
+    
       const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`);
 
       switch (ev.code) {
