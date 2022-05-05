@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         return 'ru';
       }
-      
     }
 
     renderButtons() {
@@ -163,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         this.setLang(this.lang);
 
-        setTimeout(() => this.renderButtons(), 100);
+        setTimeout(() => this.renderShiftCapslockButtons(), 100);
       }
 
       switch (ev.code) {
@@ -263,7 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           this.setLang(this.lang);
 
-          setTimeout(() => this.renderButtons(), 100);
+          setTimeout(() => this.renderShiftCapslockButtons(), 100);
           break;
         case 'ShiftLeft':
         case 'ShiftRight':
@@ -333,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const keyboardBundle = createElement('div', keyboardInfo, 'keyboard__bundle');
 
-      keyboardBundle.append('Available hotkeys:\n1. Ctrl + ⌥ / Ctrl + Alt - switch language');
+      keyboardBundle.append('Available hotkeys:\n1. Ctrl + ⌥ / Left Ctrl + Left Alt - switch language');
 
       const keyboardOs = createElement('div', keyboardInfo, 'keyboard__os');
 
