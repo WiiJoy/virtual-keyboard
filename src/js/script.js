@@ -33,24 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    // renderButtons() {
-    //   this.wrapper.innerHTML = '';
-
-    //   this.buttons[this.lang].forEach((line) => {
-    //     const btnLine = createElement('div', this.wrapper, 'keyboard__line');
-
-    //     line.forEach((button) => {
-    //       const btnClasses = ['keyboard__btn'];
-    //       if (button.keyClasses) btnClasses.push(button.keyClasses);
-    //       const btn = createElement('div', btnLine, ...btnClasses);
-    //       btn.innerHTML = button.key;
-    //       btn.dataset.key = button.keyCode;
-    //     });
-    //   });
-
-    //   this.renderShiftCapslockButtons();
-    // }
-
     renderShiftCapslockButtons() {
       const capslockBtns = this.buttons[this.lang].flat();
 
@@ -154,8 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       currBtn.classList.add('active');
 
-        console.log(ev)
-
       if (ev.ctrlKey && ev.altKey) {
         if (this.lang === 'ru') {
           this.lang = 'en';
@@ -181,7 +161,6 @@ document.addEventListener('DOMContentLoaded', () => {
           if (window.navigator.userAgent.includes('Macintosh')) {
             currBtn.classList.toggle('isPushed')
             this.renderShiftCapslockButtons();
-          //   currBtn.classList.remove('active');
             setTimeout(() => this.wrapper.querySelector('[data-key=CapsLock]').classList.remove('active'), 100)
           } else {
             setTimeout(() => currBtn.classList.toggle('isPushed'), 100)
@@ -235,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
           ev.preventDefault();
           this.changeTextValue(currBtn.innerHTML);
       }
-      
     }
 
     handleKeyUpEvent(ev) {
@@ -286,7 +264,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       setTimeout(() => currBtn.classList.remove('active'), 100)
-      
     }
 
     handleMouseClick(ev) {
@@ -416,17 +393,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!ev.target.classList.contains('keyboard__btn')) return;
         ev.target.classList.remove('hover');
       });
-    //   window.addEventListener('keydown', this.handleKeyDownEvent.bind(this));
-    //   window.addEventListener('keyup', this.handleKeyUpEvent.bind(this));
-
-      window.addEventListener('keydown', (ev) => {
-          console.log('event down')
-          this.handleKeyDownEvent(ev)
-        });
-      window.addEventListener('keyup', (ev) => {
-          console.log('event up')
-          this.handleKeyUpEvent(ev)
-        });
+      window.addEventListener('keydown', this.handleKeyDownEvent.bind(this));
+      window.addEventListener('keyup', this.handleKeyUpEvent.bind(this));
 
       this.textarea.focus();
     }
