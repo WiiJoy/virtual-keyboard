@@ -144,7 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         this.setLang(this.lang);
 
-        setTimeout(() => this.renderShiftCapslockButtons(), 100);
+        setTimeout(() => {
+            this.wrapper.querySelector('[data-key=KeyLang]').innerHTML = this.buttons[this.lang][4][0].key
+            this.renderShiftCapslockButtons()
+        }, 100);
       }
 
       switch (ev.code) {
@@ -280,7 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
           }
           this.setLang(this.lang);
 
-          setTimeout(() => this.renderShiftCapslockButtons(), 100);
+          setTimeout(() => {
+              this.renderShiftCapslockButtons()
+              currBtn.innerHTML = this.buttons[this.lang][4][0].key
+            }, 100);
           break;
         case 'ShiftLeft':
         case 'ShiftRight':
