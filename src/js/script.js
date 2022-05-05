@@ -33,23 +33,23 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    renderButtons() {
-      this.wrapper.innerHTML = '';
+    // renderButtons() {
+    //   this.wrapper.innerHTML = '';
 
-      this.buttons[this.lang].forEach((line) => {
-        const btnLine = createElement('div', this.wrapper, 'keyboard__line');
+    //   this.buttons[this.lang].forEach((line) => {
+    //     const btnLine = createElement('div', this.wrapper, 'keyboard__line');
 
-        line.forEach((button) => {
-          const btnClasses = ['keyboard__btn'];
-          if (button.keyClasses) btnClasses.push(button.keyClasses);
-          const btn = createElement('div', btnLine, ...btnClasses);
-          btn.innerHTML = button.key;
-          btn.dataset.key = button.keyCode;
-        });
-      });
+    //     line.forEach((button) => {
+    //       const btnClasses = ['keyboard__btn'];
+    //       if (button.keyClasses) btnClasses.push(button.keyClasses);
+    //       const btn = createElement('div', btnLine, ...btnClasses);
+    //       btn.innerHTML = button.key;
+    //       btn.dataset.key = button.keyCode;
+    //     });
+    //   });
 
-      this.renderShiftCapslockButtons();
-    }
+    //   this.renderShiftCapslockButtons();
+    // }
 
     renderShiftCapslockButtons() {
       const capslockBtns = this.buttons[this.lang].flat();
@@ -152,6 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`);
 
+      currBtn.classList.add('active');
+
         console.log(ev)
 
       if (ev.ctrlKey && ev.altKey) {
@@ -174,8 +176,17 @@ document.addEventListener('DOMContentLoaded', () => {
           this.renderShiftCapslockButtons();
           break;
         case 'CapsLock':
+            ev.preventDefault()
           this.isCapsLock = !this.isCapsLock;
-          this.renderShiftCapslockButtons();
+          if (window.navigator.userAgent.includes('Macintosh')) {
+            currBtn.classList.toggle('isPushed')
+            this.renderShiftCapslockButtons();
+          //   currBtn.classList.remove('active');
+            setTimeout(() => this.wrapper.querySelector('[data-key=CapsLock]').classList.remove('active'), 100)
+          } else {
+            setTimeout(() => currBtn.classList.toggle('isPushed'), 100)
+            this.renderShiftCapslockButtons();
+          }
           break;
         case 'Tab':
           ev.preventDefault();
@@ -224,7 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ev.preventDefault();
           this.changeTextValue(currBtn.innerHTML);
       }
-      currBtn.classList.add('active');
+      
     }
 
     handleKeyUpEvent(ev) {
@@ -236,14 +247,29 @@ document.addEventListener('DOMContentLoaded', () => {
         case 'ShiftLeft':
         case 'ShiftRight':
           ev.preventDefault();
+          
           this.isShift = false;
           this.isShiftPush = false;
-          this.renderButtons();
+          if (currBtn.classList.contains('isPushed')) {
+            this.wrapper.querySelector('[data-key=ShiftLeft]').classList.remove('isPushed')
+            this.wrapper.querySelector('[data-key=ShiftRight]').classList.remove('isPushed')
+          }
+          this.renderShiftCapslockButtons();
           break;
+        case 'CapsLock':
+            ev.preventDefault()
+
+            if (window.navigator.userAgent.includes('Macintosh')) {
+                this.isCapsLock = !this.isCapsLock;
+                currBtn.classList.toggle('isPushed')
+                this.renderShiftCapslockButtons();
+                currBtn.classList.add('active');
+            }
+
+            break
         case 'Enter':
         case 'Backspace':
         case 'Tab':
-        case 'CapsLock':
         case 'ControlLeft':
         case 'AltLeft':
         case 'AltRight':
@@ -253,15 +279,20 @@ document.addEventListener('DOMContentLoaded', () => {
         case 'ArrowDown':
         case 'ArrowLeft':
         case 'ArrowRight':
+            ev.preventDefault();
           break;
         default:
           ev.preventDefault();
       }
-      currBtn.classList.remove('active');
+
+      setTimeout(() => currBtn.classList.remove('active'), 100)
+      
     }
 
     handleMouseClick(ev) {
       if (!ev.target.classList.contains('keyboard__btn')) return;
+
+      const currBtn = this.wrapper.querySelector(`[data-key=${ev.target.dataset.key}]`);
 
       switch (ev.target.dataset.key) {
         case 'KeyLang':
@@ -277,10 +308,20 @@ document.addEventListener('DOMContentLoaded', () => {
         case 'ShiftLeft':
         case 'ShiftRight':
           this.isShift = !this.isShift;
+
+          if (this.isShift) {
+            this.wrapper.querySelector('[data-key=ShiftLeft]').classList.add('isPushed')
+            this.wrapper.querySelector('[data-key=ShiftRight]').classList.add('isPushed')
+          } else {
+            this.wrapper.querySelector('[data-key=ShiftLeft]').classList.remove('isPushed')
+            this.wrapper.querySelector('[data-key=ShiftRight]').classList.remove('isPushed')
+          }
+
           this.renderShiftCapslockButtons();
           break;
         case 'CapsLock':
           this.isCapsLock = !this.isCapsLock;
+          currBtn.classList.toggle('isPushed')
           this.renderShiftCapslockButtons();
           break;
         case 'Tab':
@@ -323,6 +364,8 @@ document.addEventListener('DOMContentLoaded', () => {
           this.changeTextValue(ev.target.innerHTML);
           if (!this.isShiftPush && this.isShift) {
             this.isShift = false;
+            this.wrapper.querySelector('[data-key=ShiftLeft').classList.remove('isPushed')
+            this.wrapper.querySelector('[data-key=ShiftRight').classList.remove('isPushed')
             this.renderShiftCapslockButtons();
           }
       }
@@ -373,8 +416,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!ev.target.classList.contains('keyboard__btn')) return;
         ev.target.classList.remove('hover');
       });
-      window.addEventListener('keydown', this.handleKeyDownEvent.bind(this));
-      window.addEventListener('keyup', this.handleKeyUpEvent.bind(this));
+    //   window.addEventListener('keydown', this.handleKeyDownEvent.bind(this));
+    //   window.addEventListener('keyup', this.handleKeyUpEvent.bind(this));
+
+      window.addEventListener('keydown', (ev) => {
+          console.log('event down')
+          this.handleKeyDownEvent(ev)
+        });
+      window.addEventListener('keyup', (ev) => {
+          console.log('event up')
+          this.handleKeyUpEvent(ev)
+        });
 
       this.textarea.focus();
     }
