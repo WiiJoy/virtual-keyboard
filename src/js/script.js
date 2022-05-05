@@ -205,10 +205,20 @@ document.addEventListener('DOMContentLoaded', () => {
             ev.preventDefault();
           break;
         case 'ArrowUp':
+            ev.preventDefault();
+            this.toUp();
+            break;
         case 'ArrowDown':
+            ev.preventDefault();
+            this.toDown();
+            break;
         case 'ArrowLeft':
+            ev.preventDefault();
+            this.toLeft();
+            break;
         case 'ArrowRight':
             ev.preventDefault();
+            this.toRight()
           break;
         default:
           ev.preventDefault();
