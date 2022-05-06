@@ -103,16 +103,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     handleBackspaceKeyEvent() {
-      if (!this.textarea.value || this.textarea.selectionStart === 0) return;
+        console.log(this.textarea.selectionStart, this.textarea.selectionEnd)
+      if (!this.textarea.value || (this.textarea.selectionStart === 0 && this.textarea.selectionStart === this.textarea.selectionEnd)) return;
 
       const currPosition = this.textarea.selectionStart;
+      const endPosition = this.textarea.selectionEnd;
       const oldText = this.textarea.value;
 
       this.textarea.value = '';
 
-      this.changeTextValue(oldText.slice(0, currPosition - 1) + oldText.slice(currPosition));
-
-      this.changeTextareaSelection(currPosition - 1);
+      if (currPosition === endPosition) {
+        this.changeTextValue(oldText.slice(0, currPosition - 1) + oldText.slice(endPosition));
+        this.changeTextareaSelection(currPosition - 1);
+      } else {
+        this.changeTextValue(oldText.slice(0, currPosition) + oldText.slice(endPosition));
+        this.changeTextareaSelection(currPosition);
+      }
     }
 
     handleDeleteKeyEvent() {
@@ -120,13 +126,18 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!text.value || this.textarea.selectionStart === this.textarea.value.length) return;
 
       const currPosition = this.textarea.selectionStart;
+      const endPosition = this.textarea.selectionEnd;
       const oldText = this.textarea.value;
 
       this.textarea.value = '';
 
-      this.changeTextValue(oldText.slice(0, currPosition) + oldText.slice(currPosition + 1));
-
-      this.changeTextareaSelection(currPosition);
+      if (currPosition === endPosition) {
+        this.changeTextValue(oldText.slice(0, currPosition) + oldText.slice(currPosition + 1));
+        this.changeTextareaSelection(currPosition);
+      } else {
+        this.changeTextValue(oldText.slice(0, currPosition) + oldText.slice(endPosition));
+        this.changeTextareaSelection(currPosition);
+      }
     }
 
     handleKeyDownEvent(ev) {
