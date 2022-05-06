@@ -33,8 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    renderShiftCapslockButtons() {
+    renderShiftCapslockButtons(bool = false) {
       const capslockBtns = this.buttons[this.lang].flat();
+      const isShiftTrue = this.isShift || bool
 
       capslockBtns.forEach((btn) => {
         if (btn.capsLockKey || btn.shiftKey) {
@@ -42,19 +43,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      if (this.isCapsLock && !this.isShift) {
+      if (this.isCapsLock && !isShiftTrue) {
         capslockBtns.forEach((btn) => {
           if (btn.capsLockKey) {
             this.wrapper.querySelector(`[data-key=${btn.keyCode}]`).innerHTML = btn.capsLockKey;
           }
         });
-      } else if (!this.isCapsLock && this.isShift) {
+      } else if (!this.isCapsLock && isShiftTrue) {
         capslockBtns.forEach((btn) => {
           if (btn.shiftKey) {
             this.wrapper.querySelector(`[data-key=${btn.keyCode}]`).innerHTML = btn.shiftKey;
           }
         });
-      } else if (this.isCapsLock && this.isShift) {
+      } else if (this.isCapsLock && isShiftTrue) {
         capslockBtns.forEach((btn) => {
           if (btn.shiftKey) {
             this.wrapper.querySelector(`[data-key=${btn.keyCode}]`).innerHTML = btn.shiftKey;
@@ -103,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     handleBackspaceKeyEvent() {
-        console.log(this.textarea.selectionStart, this.textarea.selectionEnd)
       if (!this.textarea.value || (this.textarea.selectionStart === 0 && this.textarea.selectionStart === this.textarea.selectionEnd)) return;
 
       const currPosition = this.textarea.selectionStart;
@@ -141,7 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     handleKeyDownEvent(ev) {
-        console.log(ev)
         if (this.fKeys.includes(ev.code) || ev.code === 'ControlRight') return
 
       const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`);
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
             this.wrapper.querySelector('[data-key=KeyLang]').innerHTML = this.buttons[this.lang][4][0].key
-            this.renderShiftCapslockButtons()
+            this.renderShiftCapslockButtons(ev.shiftKey)
         }, 100);
       }
 
@@ -170,18 +169,18 @@ document.addEventListener('DOMContentLoaded', () => {
           ev.preventDefault();
           this.isShift = true;
           this.isShiftPush = true;
-          this.renderShiftCapslockButtons();
+          this.renderShiftCapslockButtons(ev.shiftKey);
           break;
         case 'CapsLock':
             ev.preventDefault()
           this.isCapsLock = !this.isCapsLock;
           if (window.navigator.userAgent.includes('Macintosh')) {
             currBtn.classList.toggle('isPushed')
-            this.renderShiftCapslockButtons();
+            this.renderShiftCapslockButtons(ev.shiftKey);
             setTimeout(() => this.wrapper.querySelector('[data-key=CapsLock]').classList.remove('active'), 100)
           } else {
             setTimeout(() => currBtn.classList.toggle('isPushed'), 100)
-            this.renderShiftCapslockButtons();
+            this.renderShiftCapslockButtons(ev.shiftKey);
           }
           break;
         case 'Tab':
@@ -251,7 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.wrapper.querySelector('[data-key=ShiftLeft]').classList.remove('isPushed')
             this.wrapper.querySelector('[data-key=ShiftRight]').classList.remove('isPushed')
           }
-          this.renderShiftCapslockButtons();
+          this.renderShiftCapslockButtons(ev.shiftKey);
           break;
         case 'CapsLock':
             ev.preventDefault()
@@ -259,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (window.navigator.userAgent.includes('Macintosh')) {
                 this.isCapsLock = !this.isCapsLock;
                 currBtn.classList.toggle('isPushed')
-                this.renderShiftCapslockButtons();
+                this.renderShiftCapslockButtons(ev.shiftKey);
                 currBtn.classList.add('active');
             }
 
