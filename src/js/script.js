@@ -130,7 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     handleKeyDownEvent(ev) {
-        if (this.fKeys.includes(ev.code)) return
+        console.log(ev)
+        if (this.fKeys.includes(ev.code) || ev.code === 'ControlRight') return
 
       const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`);
 
@@ -220,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     handleKeyUpEvent(ev) {
-        if (this.fKeys.includes(ev.code)) return
+        if (this.fKeys.includes(ev.code) || ev.code === 'ControlRight') return
     
       const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`);
 

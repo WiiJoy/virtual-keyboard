@@ -9,16 +9,16 @@ module.exports = {
     clean: true
   },
   module: {
-        rules: [
-            {
-                test: /\.scss$/i,
-                use: [
-                    "style-loader",
-                    "css-loader",
-                    "sass-loader"
-                ]
-            }
-        ],
+    rules: [
+      {
+        test: /\.scss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader"
+        ]
+      }
+    ],
         
   },
   plugins: [
