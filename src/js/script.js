@@ -135,6 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`);
 
+      if (!currBtn) return
+
       currBtn.classList.add('active');
 
       if (ev.ctrlKey && ev.altKey) {
@@ -224,6 +226,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (this.fKeys.includes(ev.code) || ev.code === 'ControlRight') return
     
       const currBtn = this.wrapper.querySelector(`[data-key=${ev.code}]`);
+
+      if (!currBtn) return
 
       switch (ev.code) {
         case 'ShiftLeft':
