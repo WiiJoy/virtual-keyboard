@@ -26,7 +26,7 @@ module.exports = {
         title: "Virtual Keyboard",
         inject: "body",
         scriptLoading: "blocking",
-        favicon: "./src/assets/favicon.png"
+        favicon: "./src/assets/favicon.ico"
     }),
   ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
